@@ -145,9 +145,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login'
 STATIC_URL = 'static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static/login'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static')
-print("STATIC ROOT",STATIC_ROOT,STATICFILES_DIRS)
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 # Base url to serve media files
 MEDIA_URL = 'img/'
 
