@@ -71,6 +71,7 @@ def category(request,subcategory):
 
     categories = Category.objects.all()
     classifields = Classifields.objects.filter(subcategory__name=subcategory)
+    
     context = {
              'classifields': classifields,
              'categories': categories,
