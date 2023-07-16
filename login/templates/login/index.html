@@ -4,6 +4,7 @@
 {% block title %}Home Page{% endblock%}
 <!-- {% load static %} -->
 {% block content %} 
+
 <style>
   .classifields{
     display: grid;
@@ -116,7 +117,10 @@ color: #0056B3;
        
    
     <div class="sidebar">
-
+      {% load static %}
+      <img src="{% static 'login/toys.jpg' %}" alt="My image" style="width: 200px;">
+      <img src="{% static 'login/toys.jpg' %}" alt="" style="width: 200px;" >
+      <img src="{% static 'login/abacus.jpg' %}" alt="" style="width: 200px;">
     </div>
   </div>
    
