@@ -31,7 +31,7 @@ class Classifields(models.Model):
     posted_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     location = models.ForeignKey(Location,on_delete=models.CASCADE,null=True,blank=True)
-    category = models.ManyToManyField(Category,blank=True)
+    category = models.ForeignKey(Category,blank=True ,on_delete=models.CASCADE,null=True)
     subcategory = models.ForeignKey(Subcategory,on_delete=models.CASCADE,null=True,blank=True)
     phone_no = models.CharField(max_length=20,null=True)
 

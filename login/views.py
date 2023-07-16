@@ -67,10 +67,10 @@ def search(request):
 # create a view to select the classifieds that has title with 'accomodation needed'
 
 def category(request,subcategory):
-    print('subcategory',subcategory)
+   
 
     categories = Category.objects.all()
-    classifields = Classifields.objects.filter(subcategory__name=subcategory)
+    classifields = Classifields.objects.filter(subcategory_id=subcategory)
     
     context = {
              'classifields': classifields,

@@ -14,7 +14,7 @@ urlpatterns = [
     path('search/',views.search,name='search'),
     #path('category/',views.category,name='category'),
     #create a category url with a name of category as string and a view function as category
-    path('category/<str:subcategory>/',views.category,name='category'),
+    path('category/<int:subcategory>/',views.category,name='category'),
     path('category/<str:subcategory>/<str:location>/',views.category_location,name='category_location'),
     path('show/<int:id>/',views.show,name='show'),
     path('my-classifields/',views.my_classifieds,name='my_classifields'),

@@ -102,7 +102,7 @@ color: #0056B3;
       <h4 class="category_heading">{{ category.name|upper }}</h4>
       <ul>
           {% for sub in category.subcat.all %}
-              <li class="subcategory"><a href="{% url 'category' sub.name %}">{{ sub.name |capfirst}}</a></li>
+              <li class="subcategory"><a href="{% url 'category' sub.id %}">{{ sub.name |capfirst}}</a></li>
           {% endfor %}
       </ul>
     </div>
