@@ -1,0 +1,65 @@
+{% extends 'login/index.html' %} 
+{% load fontawesome_6 %}
+{% block posts %}
+<style>
+  
+  .classifields_category_items{
+    /* background-color: aquamarine; */
+    padding: 1rem;
+   
+    text-align: start;
+    border-top: 1px solid #dee2e6;
+    /* margin-bottom: .5rem; */
+  }
+  .classifields_category_items:hover{
+    background-color: rgba(0,0,0,.075);
+  }
+  a{
+    color: #007bff;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: .25rem;
+  }
+  .row *{
+    margin-right: 10px;
+  }
+  .row >h6{
+   
+    font-size: 1rem;
+    font-weight: 600;
+  
+  }
+  .text-right{
+    text-align: right;
+    font-weight: 600;
+  }
+</style>
+<div class="classified_category">
+   {% for each in classifields %}
+    <div class="classifields_category_items">
+      <div class="row">
+        <span>#{{each.id}}</span> 
+        <h6> <a href="{% url 'show' each.id %}">{{each.title|capfirst}}</a></h6>
+      </div>
+      <div class="row">
+        <h6>Posted by {{each.seller}}</h6>
+        <span><i class="fa fa-map-marker-alt" aria-hidden="true"></i><a href="{% url 'category_location' subcategory=each.subcategory location=each.location %}">{{each.location}}</a></span>
+        </div>
+        <div class="row">
+        <span><i class="fa fa-calendar" aria-hidden="true"></i>{{each.posted_date}}</span>
+        </div>
+        <p>{{each.description |capfirst}} </p>
+          <div class="text-right">USD {{each.price }}</div>
+      </div>
+      
+   {% endfor %} 
+    </div> 
+</div>
+{% endblock  %}

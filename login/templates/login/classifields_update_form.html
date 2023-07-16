@@ -1,0 +1,10 @@
+{% extends 'login/index.html' %} 
+{% load fontawesome_6 %}
+{% block posts %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
+{% endblock  %}

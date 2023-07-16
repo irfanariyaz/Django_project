@@ -1,0 +1,222 @@
+<!DOCTYPE html5>
+<html lang="en">
+  {% load fontawesome_6 %}
+<head>
+  {% fontawesome_6_static %} 
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}My Site{% endblock%}</title>
+</head>
+
+
+
+<style>
+    /* styles.css */
+
+/* Reset default margin and padding */
+*{
+  margin: 0;
+  padding: 0;
+}
+h6{
+  padding: 0;
+}
+
+/* Set a background color and font styles for the body */
+body {
+  background-color: #f2f2f2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+   
+    line-height: 1.5;
+    color:#212529;
+}
+
+/* Style the header and navigation menu */
+header {
+  width: 70%;
+  margin: 0 auto;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+
+  align-items: center;
+}
+
+nav ul li {
+  /* display: inline; */
+  margin-right: 10px;
+  
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+nav form{
+  display: flex;
+}
+
+/* Style the hero section */
+#hero {
+
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 50px 0;
+  color:black;
+ 
+}
+
+/* #hero h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+} */
+
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Style the other sections */
+section {
+  padding: 50px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+section p {
+  font-size: 16px;
+  line-height: 1.5;
+  /* margin-bottom: 20px; */
+}
+
+section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+/* Style the contact form */
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+/* styles.css */
+
+/* Rest of the code remains the same */
+
+/* Style the search bar and welcome message */
+/* .search-bar { */
+  /* display: flex; */
+  /* align-items: center; */
+/* } */
+
+.search-bar input {
+  width: 200px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-bar button {
+  padding: 8px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.welcome-message {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+
+
+</style>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            
+            <li><a href="{% url 'create_classifield' %}">Post</a></li>
+            <li><a href="{% url 'my_classifields' %}">View Post</a></li>
+
+           
+            
+            <li class="search-bar"> 
+              <form action="{% url 'search' %}" method="POST" role="search">
+                {% csrf_token %}
+                <input type="search" placeholder="Search" name='search_query'>
+                <button type="submit"><i class="fas fa-search">search</i></button>
+              </form>           
+                
+            </li>
+              <!-- <li>
+                <button class="btn"> <a href="/login">Login</a></button>
+              </li> -->
+            {% if user.is_authenticated %} 
+              <li class="welcome-message">Welcome, {{user.username}}</li>
+              <li><button class="btn"> <a href="/logout">Logout</a></button></li>
+            {% else %}
+            <li> <button class="btn"> <a href="/login">Login</a></button></li>
+            {% endif %}
+          </ul>
+         
+        </nav>
+      </header>
+      {% block content %}
+      {% endblock %}
+     
+      <footer>
+        <p>&copy; 2023 My Landing Page. All rights reserved.</p>
+      </footer>
+    
+</body>
+</html>

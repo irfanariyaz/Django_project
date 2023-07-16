@@ -1,0 +1,128 @@
+
+{% extends 'login/base.html' %} 
+<!-- {% load fontawesome_6 %} -->
+{% block title %}Home Page{% endblock%}
+<!-- {% load static %} -->
+{% block content %} 
+<style>
+  .classifields{
+    display: grid;
+    width: 70%;
+    margin: 0 auto;
+    /* justify-content: center; */
+    grid-template-columns: 20% 1fr 20%; /* Adjust the column sizes as needed */
+    grid-gap: 10px;
+   
+    padding: 2rem;
+    }
+    .sidebar{
+      background:#fbfdfda3;
+      padding: 15px;
+    }
+  .classifields_details{
+    background-color:#ffe8c3;
+    
+   
+   }
+  .classifields_items{
+  
+    display: flex;
+    padding: 1rem ;
+    flex-direction: column;
+    align-items: start;
+    gap: .5rem;
+    text-align: start;
+    border-top: 1px solid #dee2e6;
+    /* border-bottom: 1px solid rgb(219, 207, 207); */
+  }
+  .classifields_items:hover{
+    background: #dee2e6;
+  }
+  
+  .classifields > img{
+    height: 150px;
+    object-fit: contain;
+  }
+  #hero>a{
+    /* margin-bottom: 2rem; */
+    text-decoration: none;
+    color: black;
+  }
+  .learn_btn{
+    
+    margin-bottom: 2rem;
+    
+  }
+  .sidebar{
+    padding: 2rem .5rem;
+  }
+  .category{
+ 
+    margin-bottom: 1rem;
+  }
+  .category *{
+    margin-bottom: 1rem;
+  }
+    .category_heading{
+    margin-bottom: 1rem;
+  }
+  .subcategory{
+    list-style: none;
+   
+    
+    
+  }
+  .subcategory >a{
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    color: #002F34A3;
+    text-align: left;
+    font-size: 16px;
+    
+
+  }
+   .subcategory >a:hover{
+text-decoration: underline;
+color: #0056B3;
+  }
+
+  </style> 
+<section id="hero">
+  <h1>Welcome to My Page </h1>
+  <!-- <p>This is a basic landing page.</p> -->
+  <a href="#about" class="btn learn_btn" style="color: aliceblue;">Learn More</a>
+  <div class="classifields">
+    <div class="sidebar">
+      
+    {% for category in categories %}
+    <div class="category">
+      <h4 class="category_heading">{{ category.name|upper }}</h4>
+      <ul>
+          {% for sub in category.subcat.all %}
+              <li class="subcategory"><a href="{% url 'category' sub.name %}">{{ sub.name |capfirst}}</a></li>
+          {% endfor %}
+      </ul>
+    </div>
+      {% endfor %}
+    </div>
+
+    
+      <!-- <img src="{{each.image.url}} " alt="" style="width: 20%; "> -->
+    {% block posts %}
+    {% endblock %}
+     
+       
+   
+    <div class="sidebar">
+
+    </div>
+  </div>
+   
+  </section>
+
+{% endblock%}
+
+
+
