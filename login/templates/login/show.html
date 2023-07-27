@@ -26,14 +26,19 @@
     </div>
 
     <div class="content_footer">
-        <i class="fas fa-envelope"></i>
-        <a href="" class="btn">Login to Contact</a>
-        <i class="fas fa-phone"></i>
-        <a href=""class="btn btn-phone">{{classifield.phone_no}}</a>
-        {% if user == classifield.seller %}
-        <a href="{% url 'update-classified' classifield.id %}" class="btn btn-update">Edit</a>
-        <a href="{% url 'delete-classified' classifield.id %}" class="btn btn-update">Delete</a>
-        {% endif %}
+        <div class="btn">
+            <i class="fas fa-envelope"></i>
+            <a href="" style="color: aliceblue;">Login to Contact</a>
+        </div>
+        <div class="btn btn-phone">
+            <i class="fas fa-phone"></i>
+            <a href=""style="color: aliceblue;">{{classifield.phone_no}}</a>
+        </div>   
+         {% if user == classifield.seller %}
+      
+            <a href="{% url 'update-classified' classifield.id %}" class="btn btn-update">Edit</a>
+            <a href="{% url 'delete-classified' classifield.id %}" class="btn btn-update">Delete</a>
+       {% endif %}
 
     </div>
 </div>

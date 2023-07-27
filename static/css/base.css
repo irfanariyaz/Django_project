@@ -340,8 +340,10 @@ margin-left: 5px;
   border-radius: 0.25rem;
 }
 .content_footer{
+  width: 100%;
   background: #f8f8f8;
   position: relative;
+  display: inline-block;
   padding: 10px;
   border-top: solid 1px var(--border-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset;
@@ -362,7 +364,7 @@ margin-left: 5px;
 } */
 .btn-phone{
   background: #17a2b8;
-  margin-right: 6rem;
+  margin-right: 4rem;
 }
 .btn-update{
   background: rgb(250, 94, 94);
