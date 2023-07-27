@@ -5,95 +5,19 @@
 <!-- {% load static %} -->
 {% block content %} 
 
-<style>
-  .classifields{
-    display: grid;
-    width: 70%;
-    margin: 0 auto;
-    /* justify-content: center; */
-    grid-template-columns: 20% 1fr 20%; /* Adjust the column sizes as needed */
-    grid-gap: 10px;
-   
-    padding: 2rem;
-    }
-    .sidebar{
-      background:#fbfdfda3;
-      padding: 15px;
-    }
-  .classifields_details{
-    background-color:#ffe8c3;
-    
-   
-   }
-  .classifields_items{
-  
-    display: flex;
-    padding: 1rem ;
-    flex-direction: column;
-    align-items: start;
-    gap: .5rem;
-    text-align: start;
-    border-top: 1px solid #dee2e6;
-    /* border-bottom: 1px solid rgb(219, 207, 207); */
-  }
-  .classifields_items:hover{
-    background: #dee2e6;
-  }
-  
-  .classifields > img{
-    height: 150px;
-    object-fit: contain;
-  }
-  #hero>a{
-    /* margin-bottom: 2rem; */
-    text-decoration: none;
-    color: black;
-  }
-  .learn_btn{
-    
-    margin-bottom: 2rem;
-    
-  }
-  .sidebar{
-    padding: 2rem .5rem;
-  }
-  .category{
- 
-    margin-bottom: 1rem;
-  }
-  .category *{
-    margin-bottom: 1rem;
-  }
-    .category_heading{
-    margin-bottom: 1rem;
-  }
-  .subcategory{
-    list-style: none;
-   
-    
-    
-  }
-  .subcategory >a{
-    display: flex;
-    justify-content: space-between;
-    text-decoration: none;
-    margin-bottom: 1rem;
-    color: #002F34A3;
-    text-align: left;
-    font-size: 16px;
-    
-
-  }
-   .subcategory >a:hover{
-text-decoration: underline;
-color: #0056B3;
-  }
-
-  </style> 
-<section id="hero">
-  <h1>Welcome to My Page </h1>
-  <!-- <p>This is a basic landing page.</p> -->
-  <a href="#about" class="btn learn_btn" style="color: aliceblue;">Learn More</a>
+{% if hide %}
+  <div class="main">
+      <div class="search-bar">
+        <form  method="POST" role="search" action="{% url 'search' %}">
+          {% csrf_token %}
+          <input type="search" placeholder="Search" name='search_query'>
+          <button type="submit" style="color: #e2ebf4;"><i class="fas fa-search"> search</i></button>
+        </form>
+      </div>          
+        
+  </div>
+  {% endif %}
+  <section id="hero">
   <div class="classifields">
     <div class="sidebar">
       
@@ -119,8 +43,8 @@ color: #0056B3;
     <div class="sidebar">
       {% load static %}
       <img src="{% static 'toys1.jpg' %}" alt="My image" style="width: 200px;">
-      <img src="{% static 'toys1.jpg' %}" alt="" style="width: 200px;" >
-      <img src="{% static 'abacus.jpg' %}" alt="" style="width: 200px;">
+         <img src="{% static 'abacus.jpg' %}" alt="" style="width: 200px;">
+         <img src="{% static 'toys1.jpg' %}" alt="" style="width: 200px;" >
     </div>
   </div>
    

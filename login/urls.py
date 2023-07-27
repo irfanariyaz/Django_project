@@ -18,5 +18,6 @@ urlpatterns = [
     path('category/<str:subcategory>/<str:location>/',views.category_location,name='category_location'),
     path('show/<int:id>/',views.show,name='show'),
     path('my-classifields/',views.my_classifieds,name='my_classifields'),
-    path('my-classifields/update/<int:pk>/',views.ClassifieldUpdateView.as_view(),name = 'update-classified')
+    path('my-classifields/update/<int:pk>/',views.ClassifieldUpdateView.as_view(),name = 'update-classified'),
+    path('my-classifields/delete/<int:pk>/',views.ClassifieldDeleteView.as_view(),name = 'delete-classified')
     ]

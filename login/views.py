@@ -3,16 +3,18 @@ from .models import Classifields,Category,Subcategory
 from django.contrib.auth import authenticate,login,logout
 from .forms import RegisterForm, ClassifieldForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import DetailView,UpdateView,ListView
+from django.views.generic import DetailView,UpdateView,ListView,DeleteView
 from django.urls import reverse_lazy
 # Create your views here .
 
 def index(request):
        categories = Category.objects.all()
        classifields = Classifields.objects.all()
+       hide = True
        context = {
             'classifields': classifields, 
             'categories': categories, 
+            'hide': hide,
              
             }
        return render(request, 'login/posts.html',context)
@@ -52,33 +54,29 @@ def sign_up(request):
 # create a view for search bar in the navbar
 def search(request):
     if request.method == 'POST':
-       
+        categories = Category.objects.all()
         search_query = request.POST['search_query']
         classifields = Classifields.objects.filter(title__contains=search_query)
         
         context = {
             'classifields': classifields,
-            'search_query': search_query
+            'search_query': search_query,
+            'categories': categories,
         }
-        return render(request, 'login/index.html',context)
+        return render(request, 'login/category.html',context)
     else:
-        return render(request, 'login/search.html', {})
+        return render(request, 'login/index.html', {})
 
 # create a view to select the classifieds that has title with 'accomodation needed'
 
 def category(request,subcategory):
-   
-
     categories = Category.objects.all()
     classifields = Classifields.objects.filter(subcategory_id=subcategory)
-    
     context = {
              'classifields': classifields,
              'categories': categories,
      }
     return render(request, 'login/category.html',context)
-
-
 #create a view to show the details of the classifieds
 def show(request,id):
     categories = Category.objects.all()
@@ -110,9 +108,11 @@ def category_location(request,subcategory,location):
 def my_classifieds(request):
     categories = Category.objects.all()
     classifields = Classifields.objects.filter(seller=request.user)
+    hide = 'hide'
     context = {
         'classifields': classifields,
         'categories': categories,
+        'hide': False,
     }
     return render(request, 'login/category.html',context)
  
@@ -120,13 +120,18 @@ def my_classifieds(request):
 
 class ClassifieldUpdateView(UpdateView):
      model = Classifields
-     fields = "__all__"
+     fields = ['location','category','subcategory','title','description','price','price','phone_no']
      #exclude = ['seller']
      template_name_suffix = '_update_form'
      success_url = reverse_lazy('my_classifields')
-     fields_excluding = ['seller']
-          
-#how do you write an elevator pitch for full stack web development?
-
+     
+            
+#write a view to delete the classifieds
+class ClassifieldDeleteView(DeleteView):
+     model = Classifields
+     template_name_suffix = '_delete_form'
+     success_url = reverse_lazy('my_classifields')
+     
+     
 
      

@@ -5,9 +5,10 @@
     {% for each in classifields %}
     <div class="classifields_items">
     
-      <h4 >{% fa6_icon 'star' %} #{{each.id}} <i style="color: #007BFF;"> {{each.title|capfirst}}</i></h4>
-      <h5>Published at:{{each.posted_date}} by:  {{each.seller }}</h5>
-    </div>
+      <a href="{% url 'show' each.id %}">
+        <h4 >{% fa6_icon 'star' %} #{{each.id}} <i style="color:rgb(20, 20, 19); "> {{each.title|capfirst}}</i></h4>
+        <h5>Published at: {{each.posted_date}} by:  {{each.seller }}</h5>
+      </a>  </div>
     {% endfor %}
  
 </div>

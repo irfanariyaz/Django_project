@@ -1,0 +1,14 @@
+{% extends 'login/index.html' %} 
+{% load fontawesome_6 %}
+{% block posts %}
+
+<div class="delete_classified">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete the post: <span style="color: brown;">"{{ object|capfirst }}"</span> ?</p>
+    <form method="post"  class="delete_form">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-delete">Delete</button>
+        <a href="{% url 'my_classifields' %}" class="btn ">Cancel</a>  <!-- Link back to the list view -->
+    </form>
+</div>
+{% endblock  %}

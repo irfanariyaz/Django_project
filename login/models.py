@@ -27,7 +27,7 @@ class Classifields(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2,blank=True,null=True)
-    image = models.ImageField(blank=True,null=True)   
+    
     posted_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     location = models.ForeignKey(Location,on_delete=models.CASCADE,null=True,blank=True)

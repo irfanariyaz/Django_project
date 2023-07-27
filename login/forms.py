@@ -19,5 +19,5 @@ class ClassifieldForm(forms.ModelForm):
 
     class Meta:
         model = Classifields
-        fields = ['category','subcategory','location','title','description','price','phone_no','image']
+        fields = ['category','subcategory','location','title','description','price','phone_no']
 
