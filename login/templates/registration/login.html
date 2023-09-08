@@ -29,6 +29,11 @@ label {
     border-radius: 4px;
     cursor: pointer;
   }
+  .guest{
+    background-color: #333;
+    color: #ccc;
+    padding: 1rem;
+  }
   
   </style>
 {% extends 'login/base.html' %} 
@@ -49,6 +54,14 @@ label {
   
   <button type="submit">Login</button>
   <p>No Account? <a href="/sign_up">Sign Up</a></p>
+  <div class="guest">
+    For guest user use the above credentials to login : 
+    <p>
+      Username: guest
+    </p>
+      <p>Password:  password@12</p>
+  
+  </div>
  
 </form>
 {% endblock%}
